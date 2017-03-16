@@ -18,7 +18,7 @@ module.exports = {
       : config.dev.assetsPublicPath
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.json'],
+    extensions: ['.js', '.jsx', '.json', '.less'],
     alias: {
       '@': resolve('src'),
     }
@@ -30,15 +30,7 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader'
       },
-        {
-            test: /\.less?$/,
-            loaders: [
-                'style-loader',
-                'css-loader',
-                'less-loader'
-            ],
-            include: __dirname
-        },
+
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
