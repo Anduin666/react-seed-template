@@ -1,8 +1,8 @@
 {
-  "name": "wow",
+  "name": "react-project",
   "version": "1.0.0",
-  "description": "A Vue.js project",
-  "author": "ziya <ziya@51xianqu.net>",
+  "description": "A React.js project",
+  "author": "Anduin",
   "private": true,
   "scripts": {
     "dev": "node webpack/dev-server.js",
@@ -10,8 +10,6 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
-    "vue": "^2.2.2",
-    "vue-router": "^2.2.0",
     "mobx": "^3.1.0",
     "mobx-react": "^4.1.0",
     "react": "^15.4.2",

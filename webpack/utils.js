@@ -1,16 +1,8 @@
 var path = require('path')
 var config = require('../config')
-// 提取css的插件
-// https://github.com/webpack-contrib/extract-text-webpack-plugin
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 
-/**
- * 生成静态资源的路径
- * @method assertsPath
- * @param  {String}    _path 相对于静态资源文件夹的文件路径
- * @return {String}          静态资源完整路径
- */
 exports.assetsPath = function (_path) {
   var assetsSubDirectory = process.env.NODE_ENV === 'production'
     ? config.build.assetsSubDirectory
@@ -30,13 +22,6 @@ exports.cssLoaders = function (options) {
   };
 
 
-  /**
-   * 生成 ExtractTextPlugin对象或loader字符串
-   * @method generateLoaders
-   * @param  {Array}        loaders loader名称数组
-   * @return {String|Object}        ExtractTextPlugin对象或loader字符串
-   */
-  // generate loader string to be used with extract text plugin
   function generateLoaders (loader, loaderOptions) {
     var loaders = [cssLoader]
     if (loader) {
@@ -48,10 +33,6 @@ exports.cssLoaders = function (options) {
       })
     }
 
-    // Extract CSS when that option is specified
-    // (which is the case during production build)
-    // extract为true时，提取css
-    // 生产环境中，默认为true
     if (options.extract) {
       return ExtractTextPlugin.extract({
         use: loaders,
@@ -62,7 +43,6 @@ exports.cssLoaders = function (options) {
     }
   }
 
-  // http://vuejs.github.io/vue-loader/en/configurations/extract-css.html
   return {
     css: generateLoaders(),
     postcss: generateLoaders(),
@@ -75,21 +55,6 @@ exports.cssLoaders = function (options) {
 }
 
 
-/**
- * 生成 style-loader的配置
- * style-loader文档：https://github.com/webpack/style-loader
- * @method styleLoaders
- * @param  {Object}     options 生成配置
- *                              option = {
- *                                // 是否开启 sourceMap
- *                                sourceMap: true,
- *                                // 是否提取css
- *                                extract: true
- *                              }
- * @return {Array}              style-loader的配置
- */
-
-// Generate loaders for standalone style files (outside of .vue)
 exports.styleLoaders = function (options) {
   var output = []
   var loaders = exports.cssLoaders(options)

@@ -7,9 +7,8 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 
 // add hot-reload related code to entry chunks
-//循环生产 [ './build/dev-client', './src/main.js' ]
 Object.keys(baseWebpackConfig.entry).forEach(function (name) {
-  baseWebpackConfig.entry[name] = ['./build/dev-client'].concat(baseWebpackConfig.entry[name])
+  baseWebpackConfig.entry[name] = ['./webpack/dev-client'].concat(baseWebpackConfig.entry[name])
 });
 
 
@@ -24,15 +23,14 @@ module.exports = merge(baseWebpackConfig, {
       'process.env': config.dev.env
     }),
     // https://github.com/glenjamin/webpack-hot-middleware#installation--usage
-      //代码热替换
-    new webpack.HotModuleReplacementPlugin(),//插件在页面进行变更的时候只会重绘对应的页面模块，不会重绘整个 html 文件
-    new webpack.NoEmitOnErrorsPlugin(), //错误不打断程序
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
       inject: true
     }),
-    new FriendlyErrorsPlugin() //webpack错误信息提示插件
+    new FriendlyErrorsPlugin()
   ]
 })

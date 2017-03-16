@@ -41,8 +41,6 @@ var webpackConfig = merge(baseWebpackConfig, {
     }),
     // Compress extracted CSS. We are using this plugin so that possible
     // duplicated CSS from different components can be deduped.
-    // 压缩提取出来的 css
-    // 可以删除来自不同组件的冗余代码
     new OptimizeCSSPlugin(),
     // generate dist index.html with correct asset hash for caching.
     // you can customize output by editing /index.html
@@ -63,7 +61,6 @@ var webpackConfig = merge(baseWebpackConfig, {
       chunksSortMode: 'dependency'
     }),
     // split vendor js into its own file
-    // 分割公共 js 到独立的文件
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: function (module, count) {
@@ -79,13 +76,11 @@ var webpackConfig = merge(baseWebpackConfig, {
     }),
     // extract webpack runtime and module manifest to its own file in order to
     // prevent vendor hash from being updated whenever app bundle is updated
-    // 将webpack runtime 和模块清单 提取到独立的文件，以防止当 app包更新时导致公共 jsd hash也更新
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
       chunks: ['vendor']
     }),
     // copy custom static assets
-    // 复制静态资源
     new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, '../static'),
@@ -97,12 +92,9 @@ var webpackConfig = merge(baseWebpackConfig, {
 })
 
 
-// 开启 gzip 的情况时，给 webpack plugins添加 compression-webpack-plugin 插件
 if (config.build.productionGzip) {
-  // webpack 压缩插件
   var CompressionWebpackPlugin = require('compression-webpack-plugin')
 
-  // 向webpackconfig.plugins中加入下方的插件
   webpackConfig.plugins.push(
     new CompressionWebpackPlugin({
       asset: '[path].gz[query]',
@@ -118,7 +110,6 @@ if (config.build.productionGzip) {
   )
 }
 
-// 开启包分析的情况时， 给 webpack plugins添加 webpack-bundle-analyzer 插件
 if (config.build.bundleAnalyzerReport) {
   var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
   webpackConfig.plugins.push(new BundleAnalyzerPlugin())

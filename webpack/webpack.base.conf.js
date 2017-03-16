@@ -18,9 +18,7 @@ module.exports = {
       : config.dev.assetsPublicPath
   },
   resolve: {
-    // 自动补全的扩展名
     extensions: ['.js', '.jsx', '.json'],
-    // 路径别名
     alias: {
       '@': resolve('src'),
     }
