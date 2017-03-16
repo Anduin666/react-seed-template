@@ -3,7 +3,7 @@
  * */
 import React from 'react';
 import {Router, Route, Redirect, IndexRoute, browserHistory, hashHistory} from 'react-router';
-import App from '../pages/home/index'
+import App from '../view/index'
 
 const RouteConfig = (
     <Router history={hashHistory}>
