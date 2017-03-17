@@ -37,30 +37,31 @@ var webpackConfig = merge(baseWebpackConfig, {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
         // https://github.com/ampedandwired/html-webpack-plugin
-        new HtmlWebpackPlugin({
-            filename: 'index.html',
-            template: 'index.html',
-            inject: true
-        }),
+        // new HtmlWebpackPlugin({
+        //     filename: 'index.html',
+        //     template: 'index.html',
+        //     inject: true
+        // }),
         new FriendlyErrorsPlugin()
     ]
 })
 
-var pages = utils.getEntry('./src/pages/**/*.html');
-
+var pages = utils.getEntryHtml('./src/pages/**/*.html'), assets = [];
+for (var p in pages) {
+    assets['pages/'+p] = pages[p];
+}
 for (var pathname in pages) {
     // 配置生成的html文件，定义路径等
     var conf = {
         filename: pathname + '.html',
         template: pages[pathname],   // 模板路径
         inject: true,
-        excludeChunks: Object.keys(pages).filter(item => {
-            return (item != pathname)
+        excludeChunks:  Object.keys(assets).filter(item => {
+            return (item != 'pages/'+pathname)
         })
 
     };
 
-    console.log(conf);
     webpackConfig.plugins.push(new HtmlWebpackPlugin(conf));
 }
 
