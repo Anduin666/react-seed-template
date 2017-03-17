@@ -44,7 +44,7 @@ var webpackConfig = merge(baseWebpackConfig, {
         // }),
         new FriendlyErrorsPlugin()
     ]
-})
+});
 
 var pages = utils.getEntryHtml('./src/pages/**/*.html'), assets = [];
 for (var p in pages) {
@@ -59,11 +59,9 @@ for (var pathname in pages) {
         excludeChunks:  Object.keys(assets).filter(item => {
             return (item != 'pages/'+pathname)
         })
-
     };
-
     webpackConfig.plugins.push(new HtmlWebpackPlugin(conf));
 }
 
-module.exports = webpackConfig
+module.exports = webpackConfig;
 

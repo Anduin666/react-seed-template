@@ -3,15 +3,14 @@ import React from 'react';
 export default class App extends React.Component {
     constructor (props) {
         super(props);
-        this.state = {
-            test : "12131212113133"
-        }
+        this.state = {}
     }
 
 
     render () {
+        this.state.test = "sadasdsad";
         return (
-            <div>666661212ssssdsd
+            <div>
                 {this.state.test}
             </div>
         );

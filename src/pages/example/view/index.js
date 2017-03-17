@@ -4,7 +4,7 @@ export default class App extends React.Component {
     constructor (props) {
         super(props);
         this.state = {
-            test : "123"
+            test : "0"
         }
     }
 
@@ -12,7 +12,7 @@ export default class App extends React.Component {
     render () {
 
         return (
-            <div>
+            <div>1121212sdasdasd
                 {this.state.test}
             </div>
         );

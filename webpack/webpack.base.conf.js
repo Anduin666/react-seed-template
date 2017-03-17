@@ -8,7 +8,7 @@ function resolve (dir) {
 
 module.exports = {
   // entry: {
-  //   app: './src/main.js'
+  //   app: './src/pages/home/home.js'
   // },
   entry : utils.getEntry('./src/pages/**/*.js'),
   output: {
@@ -28,7 +28,7 @@ module.exports = {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
+        include: [resolve('src')],
         loader: 'babel-loader'
       },
 

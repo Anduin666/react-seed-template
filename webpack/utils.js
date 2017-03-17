@@ -40,4 +40,4 @@ exports.getEntry = function(globPath) {
     entries[pathname] = entry;
   });
   return entries;
-}
+};
