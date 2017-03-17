@@ -10,7 +10,7 @@ var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 
 // add hot-reload related code to entry chunks
 Object.keys(baseWebpackConfig.entry).forEach(function (name) {
-    baseWebpackConfig.entry[name] = ['./webpack/dev-client'].concat(baseWebpackConfig.entry[name])
+    baseWebpackConfig.entry[name] = ['./webpack/dev-client', 'react-hot-loader/patch'].concat(baseWebpackConfig.entry[name])
 });
 
 

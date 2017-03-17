@@ -1,17 +1,29 @@
 import React from 'react';
+import { observer, inject } from 'mobx-react';
 
+
+@inject('indexStore')
+@observer
 export default class App extends React.Component {
     constructor (props) {
         super(props);
-        this.state = {}
+        this.state = {
+            test : '0001212'
+        };
+
+        console.log('aaSAs',this.props.indexStore);
     }
 
+    online() {
+        this.props.indexStore.shopId = '11';
+    }
 
     render () {
-        this.state.test = "sadasdsad";
         return (
             <div>
-                {this.state.test}
+                <div onClick={this.online.bind(this)}>00000</div>
+                {this.state.test}<br/>
+                {this.props.indexStore.shopId}
             </div>
         );
     }
