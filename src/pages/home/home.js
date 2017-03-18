@@ -8,7 +8,6 @@ import * as stores from './stores';
 import {AppContainer} from 'react-hot-loader'
 
 
-
 ReactDOM.render(<AppContainer><Provider { ...stores }>{Route}</Provider></AppContainer>, document.getElementById('app'));
 
 if (module.hot) {
