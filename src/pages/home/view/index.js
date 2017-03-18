@@ -1,5 +1,6 @@
 import React from 'react';
 import { observer, inject } from 'mobx-react';
+import styles from '../assets/index.less'
 
 
 @inject('indexStore')
@@ -21,6 +22,7 @@ export default class App extends React.Component {
     render () {
         return (
             <div>
+                <span className={styles.home}>5555</span>
                 <div onClick={this.online.bind(this)}>00000</div>
                 {this.state.test}<br/>
                 {this.props.indexStore.shopId}

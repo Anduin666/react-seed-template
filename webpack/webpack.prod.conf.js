@@ -20,7 +20,7 @@ var webpackConfig = merge(baseWebpackConfig, {
         test: /\.less$/,
         loader: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: 'css-loader!less-loader'
+          use: 'css-loader?modules&camelCase&importLoaders=1&localIdentName=[name]__[local]__[hash:base64:8]!postcss-loader!less-loader'
         })
       }
     ]
@@ -40,7 +40,7 @@ var webpackConfig = merge(baseWebpackConfig, {
       compress: {
         warnings: false
       },
-      sourceMap: true
+      sourceMap: false
     }),
     // extract css into its own file
     new ExtractTextPlugin({

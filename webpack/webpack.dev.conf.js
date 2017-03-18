@@ -21,7 +21,7 @@ var webpackConfig = merge(baseWebpackConfig, {
                 test: /\.less?$/,
                 loaders: [
                     'style-loader',
-                    'css-loader',
+                    'css-loader?modules&camelCase&importLoaders=1&localIdentName=[name]__[local]__[hash:base64:8]',
                     'less-loader'
                 ]
             }
